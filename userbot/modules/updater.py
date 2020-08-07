@@ -22,8 +22,7 @@ from userbot import (
     HEROKU_API_KEY,
     HEROKU_APP_NAME,
     UPSTREAM_REPO_URL,
-    UPSTREAM_REPO_BRANCH,
-    UPDATER_ALIAS)
+    UPSTREAM_REPO_BRANCH)
 from userbot.events import register
 
 requirements_path = path.join(
@@ -173,7 +172,7 @@ async def upstream(event):
 
     if changelog == '' and force_update is False:
         await event.edit(
-            f'\n`{UPDATER_ALIAS} is`  **Terbaru**  `Dengan`  **{UPSTREAM_REPO_BRANCH}**\n')
+            f'\n`ShinoaHiiragiBot`  ** Terupdate**  `Dengan`  **{UPSTREAM_REPO_BRANCH}**\n')
         return repo.__del__()
 
     if conf is None and force_update is False:
