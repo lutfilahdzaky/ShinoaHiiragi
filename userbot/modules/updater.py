@@ -73,7 +73,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
                 f'{txt}\n`Invalid Heroku credentials for deploying userbot dyno.`'
             )
             return repo.__del__()
-        await event.edit('`Userbot dyno build in progress, please wait...`')
+        await event.edit('`Dyno Sedang Di Proses, Silahkan Tunggu...`')
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
         heroku_git_url = heroku_app.git_url.replace(
@@ -88,13 +88,13 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         except GitCommandError as error:
             await event.edit(f'{txt}\n`Here is the error log:\n{error}`')
             return repo.__del__()
-        await event.edit('`Successfully Updated!\n'
-                         'Restarting, please wait...`')
+        await event.edit('`Berhasil Diperbaharui!\n'
+                         'Sedang Direstart, Silahkan Tunggu...`')
 
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID, "#UPDATE \n"
-                "Your One4uBot was successfully updated")
+                "ShinoaHiiragiBot Kamu Telah Diperbaharui")
 
     else:
         await event.edit('`Please set up HEROKU_API_KEY variable.`')
@@ -107,13 +107,13 @@ async def update(event, repo, ups_rem, ac_br):
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
-    await event.edit('`Successfully Updated!\n'
-                     'Bot is restarting... Wait for a second!`')
+    await event.edit('`Berhasil Diperbaharui!\n'
+                     'Bot Sedang Direstart... Tunggu Beberapa Detik!`')
 
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID, "#UPDATE \n"
-            "Your One4uBot was successfully updated")
+            "ShinoaHiiragiBot Telah Berhasil Diperbaharui")
 
     # Spin a new instance of bot
     args = [sys.executable, "-m", "userbot"]
@@ -124,7 +124,7 @@ async def update(event, repo, ups_rem, ac_br):
 @register(outgoing=True, pattern=r"^.update(?: |$)(now|deploy)?")
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
-    await event.edit("`Checking for updates, please wait....`")
+    await event.edit("`Memeriksa Pembaruan, Silahkan Tunggu....`")
     conf = event.pattern_match.group(1)
     off_repo = UPSTREAM_REPO_URL
     force_update = False
@@ -173,13 +173,13 @@ async def upstream(event):
 
     if changelog == '' and force_update is False:
         await event.edit(
-            f'\n`{UPDATER_ALIAS} is`  **up-to-date**  `with`  **{UPSTREAM_REPO_BRANCH}**\n')
+            f'\n`{UPDATER_ALIAS} is`  **Terbaru**  `Dengan`  **{UPSTREAM_REPO_BRANCH}**\n')
         return repo.__del__()
 
     if conf is None and force_update is False:
-        changelog_str = f'**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`'
+        changelog_str = f'**UPDATE Terbaru Untuk [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`'
         if len(changelog_str) > 4096:
-            await event.edit("`Changelog is too big, view the file to see it.`")
+            await event.edit("`Log Sangat Besar, Buka File Untuk Melihat`")
             file = open("output.txt", "w+")
             file.write(changelog_str)
             file.close()
@@ -191,13 +191,13 @@ async def upstream(event):
             remove("output.txt")
         else:
             await event.edit(changelog_str)
-        return await event.respond('`do ".update now/deploy" to update`')
+        return await event.respond('`Lakukan ".update now / deploy" Untuk Memperbarui`')
 
     if force_update:
         await event.edit(
-            '`Force-Syncing to latest stable userbot code, please wait...`')
+            '`Menstabilkan Kode Userbot ShinoaHiiragiBot, Silahkan Tunggu...`')
     else:
-        await event.edit('`Updating One4uBot, please wait....`')
+        await event.edit('`Updating ShinoaHiiragiBot, Silahkan Tunggu....`')
     if conf == "now":
         await update(event, repo, ups_rem, ac_br)
     elif conf == "deploy":
