@@ -221,12 +221,12 @@ async def amireallyalive(alive):
 async def amireallyaliveuser(username):
     """ For .aliveu command, change the username in the .alive command. """
     message = username.text
-    output = '.aliveu [new user without brackets] nor can it be empty'
+    output = '.aliveu [Nama Yang Ingin Kamu Tambahkan] Tidak Boleh Kosong'
     if not (message == '.aliveu' or message[7:8] != ' '):
         newuser = message[8:]
         global DEFAULTUSER
         DEFAULTUSER = newuser
-        output = 'Successfully changed user to ' + newuser + '!'
+        output = 'Nama Berhasil Diganti Menjadi ' + newuser + '!'
     await username.edit("`" f"{output}" "`")
 
 
