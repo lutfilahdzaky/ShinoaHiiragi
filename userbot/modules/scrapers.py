@@ -43,9 +43,9 @@ from userbot.utils import progress
 from userbot.utils.google_images_download import googleimagesdownload
 
 CARBONLANG = "auto"
-TTS_LANG = "en"
-TRT_LANG = "en"
-TEMP_DOWNLOAD_DIRECTORY = "/One4uBot/.bin"
+TTS_LANG = "id"
+TRT_LANG = "id"
+TEMP_DOWNLOAD_DIRECTORY = "/ShinoaHiiragi/.bin"
 
 
 @register(outgoing=True, pattern="^.crblang (.*)")
