@@ -1000,3 +1000,4 @@ CMD_HELP.update({
 \n\n.setgppic <reply to image>\
 \nUsage: Changes the group's display picture."
 })
+
