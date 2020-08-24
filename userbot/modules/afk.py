@@ -10,8 +10,7 @@ from asyncio import sleep
 
 from telethon.events import StopPropagation
 
-from userbot import (AFKREASON, COUNT_MSG, CMD_HELP, ISAFK, BOTLOG,
-                     BOTLOG_CHATID, USERS, PM_AUTO_BAN)
+from userbot import (AFKREASON, CMD_HELP, BOTLOG, BOTLOG_CHATID, PM_AUTO_BAN)
 from userbot.events import register
 
 # ========================= CONSTANTS ============================
@@ -93,7 +92,7 @@ async def afk_on_pm(sender):
 @register(outgoing=True, pattern="^.afk(?: |$)(.*)", disable_errors=True)
 async def set_afk(afk_e):
     """ For .afk command, allows you to inform people that you are afk when they message you """
-    message = afk_e.text
+    afk_e.text
     string = afk_e.pattern_match.group(1)
     global ISAFK
     global AFKREASON
