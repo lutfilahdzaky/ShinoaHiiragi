@@ -10,7 +10,7 @@ async def typewriter(typew):
     sleep(5)
     await typew.edit("Sedang Mencari Informasi Korban...")
     sleep(5)
-    await typew.edit("Informasi Ditemukan...\nMengirim Santet Diproses!")
+    await typew.edit("Informasi Ditemukan...\nSantet Diproses!")
     sleep(5)
     await typew.edit("0%")
     number = 1
