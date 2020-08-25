@@ -1,4 +1,3 @@
-
 from datetime import datetime
 import time
 from random import choice, randint
@@ -139,7 +138,7 @@ async def mention_afk(mention):
             else:
                 afk_since = f"{int(seconds)}d Yang Lalu"
             if mention.sender_id not in USERS:
-                if AFK
+                if AFKREASON:
                     await mention.reply(f"Saya Sedang AFK {afk_since}.\
                         \n{AFKREASON}")
                 else:
@@ -148,7 +147,7 @@ async def mention_afk(mention):
                 COUNT_MSG = COUNT_MSG + 1
             elif mention.sender_id in USERS:
                 if USERS[mention.sender_id] % randint(2, 4) == 0:
-                    if AFK
+                    if AFKREASON:
                         await mention.reply(f"Saya Sedang AFK {afk_since}.\
                             \n {AFKREASON}")
                     else:
@@ -215,7 +214,7 @@ async def afk_on_pm(sender):
             else:
                 afk_since = f"{int(seconds)}d Yang Lalu"
             if sender.sender_id not in USERS:
-                if AFK
+                if AFKREASON:
                     await sender.reply(f"Saya Sedang AFK {afk_since}.\
                         \n {AFKREASON}")
                 else:
@@ -224,7 +223,7 @@ async def afk_on_pm(sender):
                 COUNT_MSG = COUNT_MSG + 1
             elif apprv and sender.sender_id in USERS:
                 if USERS[sender.sender_id] % randint(2, 4) == 0:
-                    if AFK
+                    if AFKREASON:
                         await sender.reply(f"Saya Sedang AFK {afk_since}.\
                             \n {AFKREASON}")
                     else:
